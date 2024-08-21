@@ -4,7 +4,7 @@ const SaleSchema = new mongoose.Schema(
   {
     userID: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Users", // Ensure this matches the model name
+      ref: "User", // Ensure this matches the model name
       required: false,
     },
     productID: {

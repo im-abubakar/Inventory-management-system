@@ -4,7 +4,7 @@ const StoreSchema = new mongoose.Schema(
   {
     userID: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Users',
+      ref: 'User',
       required: true,
     },
     name: {
@@ -31,5 +31,5 @@ const StoreSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Store = mongoose.model("store", StoreSchema);
+const Store = mongoose.model("Store", StoreSchema);
 module.exports = Store;

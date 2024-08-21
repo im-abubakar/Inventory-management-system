@@ -1,27 +1,5 @@
-const Sales = require("../models/sales");
-const soldStock = require("../controller/soldStock");
-
-// Add Sales
-// const addSales = async (req, res) => {
-//   try {
-//     const addSale = new Sales({
-//       userID: req.body.userID,
-//       ProductID: req.body.productID,
-//       StoreID: req.body.storeID,
-//       StockSold: req.body.stockSold,
-//       SaleDate: req.body.saleDate,
-//       TotalSaleAmount: req.body.totalSaleAmount,
-//     });
-
-//     const result = await addSale.save();
-//     await soldStock(req.body.productID, req.body.stockSold);
-//     res.status(200).send(result);
-//   } catch (err) {
-//     res.status(500).send({ error: "Server error", details: err.message });
-//   }
-// };
-
-
+const Sales = require("../models/Sales");
+const soldStock = require("./soldStock-controller.js");
 
 const addSales = async (req, res) => {
   try {
@@ -51,31 +29,16 @@ const addSales = async (req, res) => {
 
 
 // Get All Sales Data
-// const getSalesData = async (req, res) => {
-//   try {
-    
-//     console.log("sale data is ", findAllSalesData)
-//     const findAllSalesData = await Sales.find({ userID: req.params.userID })
-//       .sort({ _id: -1 })
-//       .populate("ProductID")
-//       .populate("StoreID"); // -1 for descending order
-
-//       console.log("sale data is ", findAllSalesData)
-//     res.status(200).json(findAllSalesData);
-//   } catch (err) {
-//     res.status(500).json({ error: "Server error", details: err.message });
-//   }
-// };
 const getSalesData = async (req, res) => {
   try {
     // Fetch all sales data for the user
     const findAllSalesData = await Sales.find({ userID: req.params.userID })
-      .sort({ _id: -1 })
-      .populate("ProductID")
-      .populate("StoreID"); // -1 for descending order
+    .sort({ _id: -1 })
+    .populate("productID")
+    .populate("storeID");
 
     // Log the fetched sales data
-    console.log("Sale data is: ", findAllSalesData);
+    // console.log("Sale data is: ", findAllSalesData);
 
     // Send the sales data as a JSON response
     res.status(200).json(findAllSalesData);
@@ -84,15 +47,6 @@ const getSalesData = async (req, res) => {
     res.status(500).json({ error: "Server error", details: err.message });
   }
 };
-
-
-// const getSalesData = async (req, res) => {
-//   console.log("user param is",req.params.userId);
-//    const findAllSalesData = await Sales.find({ userID: req.params.userID })
-//     .lean();
-//   res.json(findAllSalesData);
-// };
-
 
 // Get Total Sales Amount
 const getTotalSalesAmount = async (req, res) => {

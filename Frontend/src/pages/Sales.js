@@ -24,7 +24,7 @@ const Sales = () => {
     setLoading(true);
     try {
       const response = await fetch(`http://localhost:4000/api/sales/get/${authContext.user}`);
-      console.log("data is ",response)
+      // console.log("data is ",response)
       if (!response.ok) throw new Error('Failed to fetch sales data');
       const data = await response.json();
       setAllSalesData(data);
@@ -65,7 +65,7 @@ const Sales = () => {
     }
   };
 
-
+// console.log("sale data is ",sales[0].productID.name)
   
   // Modal for Sale Add
   const addSaleModalSetting = () => {
@@ -136,19 +136,19 @@ const Sales = () => {
               {sales.map((element) => (
                 <tr key={element._id}>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-900">
-                    {element.ProductID?.name}
+                    {element.productID?.name || 'no product name'}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.StoreID?.name}
+                    {element.storeID?.name}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.StockSold}
+                    {element.stockSold}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {new Date(element.SaleDate).toLocaleDateString()} {/* Format the date */}
+                    {new Date(element.saleDate).toLocaleDateString()} {/* Format the date */}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    ${element.TotalSaleAmount}
+                    ${element.totalSaleAmount}
                   </td>
                 </tr>
               ))}

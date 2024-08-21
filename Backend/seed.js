@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Types;
-const Store =  require('./models/store')
+const Store =  require('./models/Store')
 
  // Adjust the path as needed
 

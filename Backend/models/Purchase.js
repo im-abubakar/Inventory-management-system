@@ -4,7 +4,7 @@ const PurchaseSchema = new mongoose.Schema(
   {
     userID: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Users",
+      ref: "User",
       required: true,
     },
     ProductID: {
@@ -28,5 +28,5 @@ const PurchaseSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Purchase = mongoose.model("purchase", PurchaseSchema);
+const Purchase = mongoose.model("Purchase", PurchaseSchema);
 module.exports = Purchase;

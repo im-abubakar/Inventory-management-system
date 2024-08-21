@@ -1,5 +1,5 @@
-const Purchase = require("../models/purchase");
-const purchaseStock = require("./purchaseStock");
+const Purchase = require("../models/Purchase");
+const purchaseStock = require("./purchase-stock-controller");
 
 // Add Purchase Details
 const addPurchase = (req, res) => {
@@ -23,7 +23,7 @@ const addPurchase = (req, res) => {
 };
 
 // Get All Purchase Data
-const getPurchaseData = async (req, res) => {
+const getPurchaseData = async (req, res)=> {
   const findAllPurchaseData = await Purchase.find({"userID": req.params.userID})
     .sort({ _id: -1 })
     .populate("ProductID"); // -1 for descending order

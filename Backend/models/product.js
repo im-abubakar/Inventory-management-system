@@ -4,12 +4,12 @@ const ProductSchema = new mongoose.Schema(
   {
     userID: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'users',
+      ref: 'User',
       required: true,
     },
     name: {
       type: String,
-      required: true,
+      required: true,   
     },
     manufacturer: {
       type: String,
@@ -25,5 +25,5 @@ const ProductSchema = new mongoose.Schema(
 );
 
 
-const Product = mongoose.model("product", ProductSchema);
+const Product = mongoose.model("Product", ProductSchema);
 module.exports = Product;
