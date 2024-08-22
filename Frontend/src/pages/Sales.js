@@ -14,17 +14,21 @@ const Sales = () => {
   const authContext = useContext(AuthContext);
 
   useEffect(() => {
-    fetchSalesData();
-    fetchProductsData();
-    fetchStoresData();
+    const fetchData = async () => {
+      await fetchSalesData();
+      await fetchProductsData();
+      await fetchStoresData();
+    };
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [updatePage]);
-
+  
   // Fetching Data of All Sales
   const fetchSalesData = async () => {
     setLoading(true);
     try {
       const response = await fetch(`http://localhost:4000/api/sales/get/${authContext.user}`);
-      // console.log("data is ",response)
+      // console.log("response is ",response)
       if (!response.ok) throw new Error('Failed to fetch sales data');
       const data = await response.json();
       setAllSalesData(data);
@@ -65,7 +69,6 @@ const Sales = () => {
     }
   };
 
-// console.log("sale data is ",sales[0].productID.name)
   
   // Modal for Sale Add
   const addSaleModalSetting = () => {

@@ -35,8 +35,8 @@ export const data = {
 function Dashboard() {
   const [saleAmount, setSaleAmount] = useState("");
   const [purchaseAmount, setPurchaseAmount] = useState("");
-  const [stores, setStores] = useState([]);
   const [products, setProducts] = useState([]);
+  const [stores, setStores] = useState([]);
 
   const [chart, setChart] = useState({
     options: {
