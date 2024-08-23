@@ -13,7 +13,9 @@ function PurchaseDetails() {
   useEffect(() => {
     fetchPurchaseData();
     fetchProductsData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [updatePage]);
+
 
   // Fetching Data of All Purchase items
   const fetchPurchaseData = () => {
@@ -102,7 +104,7 @@ function PurchaseDetails() {
                       {element.QuantityPurchased}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                      {new Date(element.PurchaseDate).toLocaleDateString() ==
+                      {new Date(element.PurchaseDate).toLocaleDateString() ===
                       new Date().toLocaleDateString()
                         ? "Today"
                         : element.PurchaseDate}

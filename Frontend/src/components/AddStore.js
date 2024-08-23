@@ -43,7 +43,8 @@ export default function AddStore() {
         throw new Error("Failed to add store");
       }
 
-      const result = await response.json();
+      // const result = await response.json();
+
       alert("STORE ADDED");
       setOpen(false);
     } catch (err) {
@@ -212,7 +213,7 @@ export default function AddStore() {
                           <div className="mt-2">
                             <img
                               src={imagePreview}
-                              alt="Uploaded store image"
+                              alt="Uploaded store"
                               className="w-full h-auto rounded"
                             />
                           </div>
