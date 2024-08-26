@@ -8,12 +8,15 @@ const cors = require("cors");
 const User = require("./models/User");
 const Product = require("./models/Product");
 
+const bcrypt = require("bcryptjs")
+
 
 const app = express();
 const PORT = 4000;
 main();
 app.use(express.json());
 app.use(cors());
+
 
 // Store API
 app.use("/api/store", storeRoute);
@@ -26,6 +29,8 @@ app.use("/api/purchase", purchaseRoute);
 
 // Sales API
 app.use("/api/sales", salesRoute);
+
+
 
 // ------------- Signin --------------
 let userAuthCheck;
@@ -57,8 +62,16 @@ app.get("/api/login", (req, res) => {
 });
 // ------------------------------------
 
+
+
 // Registration API
-app.post("/api/register", (req, res) => {
+
+// hash the password
+
+
+app.post("/api/register", async (req, res) => {
+  const saltRound = 10;
+  const hash_password = await bcrypt.hash(req.body.password,saltRound)
   let registerUser = new User({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
