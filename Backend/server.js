@@ -35,7 +35,7 @@ app.use("/api/sales", salesRoute);
 // ------------- Signin --------------
 let userAuthCheck;
 app.post("/api/login", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   // res.send("hi");
   try {
     const user = await User.findOne({
@@ -69,9 +69,9 @@ app.get("/api/login", (req, res) => {
 // hash the password
 
 
-app.post("/api/register", async (req, res) => {
-  const saltRound = 10;
-  const hash_password = await bcrypt.hash(req.body.password,saltRound)
+app.post("/api/register", (req, res) => {
+  // const saltRound = 10;
+  // const hash_password = await bcrypt.hash(req.body.password,saltRound)
   let registerUser = new User({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
