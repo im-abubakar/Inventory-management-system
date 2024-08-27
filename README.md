@@ -47,7 +47,7 @@
 
 <h3>Clone the Repository</h3>
 <pre>
-<code>git clone https://github.com/your-username/inventory-management-system.git
+<code>git clone https://github.com/im-abubakar/Inventory-management-system.git
 cd inventory-management-system
 </code>
 </pre>
