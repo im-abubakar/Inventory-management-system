@@ -25,7 +25,7 @@ const StoreSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      required: false,
+      required: true,
     },
   },
   { timestamps: true }

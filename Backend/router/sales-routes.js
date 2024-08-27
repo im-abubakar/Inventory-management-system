@@ -8,7 +8,7 @@ app.post("/add", sales.addSales);
 // Get All Sales
 app.get("/get/:userID", sales.getSalesData);
 // app.get("/get/:userId", product.getAllProducts);
-app.get("/getmonthly", sales.getMonthlySales);
+app.get("/getmonthly/:userID", sales.getMonthlySales);
 
 
 app.get("/get/:userID/totalsaleamount", sales.getTotalSalesAmount);

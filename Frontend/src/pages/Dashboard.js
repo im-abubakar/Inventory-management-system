@@ -98,7 +98,9 @@ function Dashboard() {
       `http://localhost:4000/api/sales/get/${authContext.user}/totalsaleamount`
     )
       .then((response) => response.json())
-      .then((datas) => setSaleAmount(datas.totalSaleAmount));
+      .then((datas) => {
+        console.log("dats is",datas)
+        setSaleAmount(datas.totalSaleAmount)});
   };
 
   // Fetching total purchase amount
@@ -121,15 +123,19 @@ function Dashboard() {
   const fetchProductsData = () => {
     fetch(`http://localhost:4000/api/product/get/${authContext.user}`)
       .then((response) => response.json())
-      .then((datas) => setProducts(datas))
+      .then((datas) => {
+        // console.log("Fetched Data:", datas); 
+        setProducts(datas)})
       .catch((err) => console.log(err));
   };
 
   // Fetching Monthly Sales
   const fetchMonthlySalesData = () => {
-    fetch(`http://localhost:4000/api/sales/getmonthly`)
+    fetch(`http://localhost:4000/api/sales/getmonthly/${authContext.user}`)
       .then((response) => response.json())
-      .then((datas) => updateChartData(datas.salesAmount))
+      .then((datas) => {
+         console.log("sale Data:", datas); 
+          updateChartData(datas.salesAmount)})
       .catch((err) => console.log(err));
   };
 

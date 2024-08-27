@@ -5,25 +5,25 @@ const SaleSchema = new mongoose.Schema(
     userID: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User", // Ensure this matches the model name
-      required: false,
+      required: true,
     },
     productID: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product", // Ensure this matches the model name
-      required: false,
+      required: true,
     },
     storeID: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Store", // Ensure this matches the model name
-      required: false,
+      required: true,
     },
     stockSold: {
       type: Number,
-      required: false,
+      required: true,
     },
     saleDate: {
       type: Date,
-      required: false,
+      required: true,
     },
     totalSaleAmount: {
       type: Number,

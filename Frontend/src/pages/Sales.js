@@ -31,6 +31,7 @@ const Sales = () => {
       // console.log("response is ",response)
       if (!response.ok) throw new Error('Failed to fetch sales data');
       const data = await response.json();
+      console.log("store data is ",data)
       setAllSalesData(data);
     } catch (err) {
       setError(err.message);
@@ -142,7 +143,7 @@ const Sales = () => {
                     {element.productID?.name || 'no product name'}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {element.storeID?.name}
+                    {element.storeID?.name || 'no store data'}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
                     {element.stockSold}
